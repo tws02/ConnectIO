@@ -20,7 +20,7 @@ router.post(
     check(
       "password",
       "Please enter a password with at least 8 characters"
-    ).isLength({ min: 6 }),
+    ).isLength({ min: 6 })
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -37,8 +37,8 @@ router.post(
       if (user) {
         return res.status(400).json({
           errors: [
-            { msg: "This email has an existing account. Please log in." },
-          ],
+            { msg: "This email has an existing account. Please log in." }
+          ]
         });
       }
 
@@ -51,13 +51,13 @@ router.post(
         r: "pg",
 
         // default
-        d: "mm",
+        d: "mm"
       });
 
       user = new User({
         name,
         email,
-        password,
+        password
       });
 
       // Encrypt using Bcrypt
@@ -70,8 +70,8 @@ router.post(
       // Return json Web Token
       const payload = {
         user: {
-          id: user.id,
-        },
+          id: user.id
+        }
       };
       jwt.sign(
         payload,
