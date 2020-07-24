@@ -1,10 +1,15 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+// import { setAlert } from "../../actions/alert";
+import { login } from "../../actions/auth";
+import PropTypes from "prop-types";
+import { setAlert } from "../../actions/alert";
 
-const Login = () => {
+const Login = ({ login }) => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
+    password: ""
   });
 
   const { email, password } = formData;
@@ -13,7 +18,7 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
-    // GET to API. check password.
+    login(email, password);
   };
 
   return (
@@ -53,4 +58,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func.isRequired
+};
+
+export default connect(null, { login })(Login);
