@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const Landing = ({ auth: { isAuthenticated, loading } }) => {
+  if (isAuthenticated) return <Redirect to="/dashboard" />;
   const authLinks = (
     <Link to="/dashboard" className="btn btn-primary">
       Dashboard
@@ -38,8 +39,8 @@ Landing.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
-const mapStateToProp = (state) => ({
+const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProp)(Landing);
+export default connect(mapStateToProps)(Landing);
