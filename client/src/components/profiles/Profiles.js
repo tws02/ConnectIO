@@ -21,12 +21,12 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
             other enthusiastic people
           </p>
           <div className="profiles">
-            {profiles.length === 0 ? (
-              <h4>No Profile Found</h4>
-            ) : (
+            {profiles.length > 0 ? (
               profiles.map((profile) => (
                 <ProfileItem key={profile._id} profile={profile} />
               ))
+            ) : (
+              <h4>No Profile Found</h4>
             )}
           </div>
         </Fragment>
