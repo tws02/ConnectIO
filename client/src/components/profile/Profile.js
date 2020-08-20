@@ -71,13 +71,13 @@ const Profile = ({
                 <h4>No Education</h4>
               )}
             </div>
-
-            {profile.githubusername && (
-              <ProfileGithub
-                username={profile.githubusername}
-                repos={profile.repos}
-              ></ProfileGithub>
-            )}
+            <div>
+              {profile.githubusername && (
+                <ProfileGithub
+                  username={profile.githubusername}
+                ></ProfileGithub>
+              )}
+            </div>
           </div>
         </Fragment>
       )}

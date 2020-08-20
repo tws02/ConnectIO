@@ -17,11 +17,17 @@ const ProfileGithub = ({ username, getRepos, repos }) => {
       ) : (
         repos.map((repo) => (
           <div key={repo._id} className="repo bg-white p-1 my-1">
-            <h4>
-              <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-                {repo.name}
-              </a>
-            </h4>
+            <div>
+              <h4>
+                <a
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {repo.name}
+                </a>
+              </h4>
+            </div>
             <p>{repo.description}</p>
             <div>
               <ul>
@@ -29,9 +35,9 @@ const ProfileGithub = ({ username, getRepos, repos }) => {
                   Stars: {repo.stargazers_count}
                 </li>
                 <li className="badge badge-dark">
-                  Stars: {repo.watchers_count}
+                  Watchers: {repo.watchers_count}
                 </li>
-                <li className="badge badge-white">Stars: {repo.forks_count}</li>
+                <li className="badge badge-white">Forks: {repo.forks_count}</li>
               </ul>
             </div>
           </div>
@@ -48,7 +54,7 @@ ProfileGithub.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  repos: state.repos
+  repos: state.profile.repos
 });
 
 export default connect(mapStateToProps, { getRepos })(ProfileGithub);
