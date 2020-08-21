@@ -26,7 +26,7 @@ router.post(
         user: req.user.id,
         text: req.body.text,
         name: user.name,
-        avatar: user.avatar,
+        avatar: user.avatar
       });
 
       const post = await newPost.save();
@@ -137,7 +137,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
       post.likes.filter((like) => like.user.toString() == req.user.id).length ==
       0
     ) {
-      return res.status(400).json({ msg: "Post is not liked" });
+      return res.status(400).json({ errors: [{ msg: "Post is not liked" }] });
     }
 
     const removeIndex = post.likes
@@ -174,7 +174,7 @@ router.put(
         user: req.user.id,
         text: req.body.text,
         name: user.name,
-        avatar: user.avatar,
+        avatar: user.avatar
       };
       post.comments.unshift(newComment);
 
