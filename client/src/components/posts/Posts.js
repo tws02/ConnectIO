@@ -9,7 +9,7 @@ import PostItem from "./PostItem";
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
-  });
+  }, [getPosts]);
 
   return loading ? (
     <Spinner />
