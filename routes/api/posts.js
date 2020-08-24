@@ -154,10 +154,10 @@ router.put("/unlike/:id", auth, async (req, res) => {
   }
 });
 
-// @route    PUT api/posts/comment/:id
+// @route    POST api/posts/comment/:id
 // @desc     comment on a post
 // @access   Private
-router.put(
+router.post(
   "/comment/:id",
   [auth, [check("text", "text is required").not().isEmpty()]],
   async (req, res) => {
