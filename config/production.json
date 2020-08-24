@@ -1,0 +1,6 @@
+{
+  "mongoURI": "mongodb+srv://admin:admin@connectio.jialh.azure.mongodb.net/<dbname>?retryWrites=true&w=majority",
+  "jwtSecret": "S3aU=*VKwn1Wmr}g",
+  "githubClientId": "bc4cacb7a22eb6dd23a6",
+  "githubSecret": "ffc785cc961740efb9341d6a237824ac8660b40b"
+}
